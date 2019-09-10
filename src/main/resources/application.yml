@@ -1,0 +1,141 @@
+spring:
+  profiles:
+#    active: dev
+    active: test
+#    active: postgre
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: xxxxxxxxx@gmail.com
+    password: xxxxxxx
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+
+aws:
+  secret-key: xxxxxxxxxxx
+  access-key: xxxxxxxxxx
+  bucket-name: geo-rent-bucket
+  and-point-url: https://georent.ua/
+  expires-in: 60000
+  file-size-max: 204800
+
+app:
+  jwt:
+    secretKey: xxxxxxxxxxxxxxx
+    expiresIn: 3600000
+---
+
+spring:
+  profiles: test
+
+  datasource:
+    url: jdbc:h2:mem:georentdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    platform: h2
+    username: geo
+    password: geo
+
+    hikari:
+      maximum-pool-size: 10
+      connectionTimeout: 3000
+      leakDetectionThreshold: 30000
+#      minimum-idle: 1
+      max-lifetime: 120000
+    type: com.zaxxer.hikari.HikariDataSource
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: true
+    show-sql: false
+
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: false
+
+logging:
+  config: classpath:logback-local.xml
+---
+spring:
+  profiles: dev
+
+  datasource:
+#    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+
+    hikari:
+      maximum-pool-size: 10
+      connectionTimeout: 3000
+      leakDetectionThreshold: 30000
+      #      minimum-idle: 1
+      max-lifetime: 120000
+    type: com.zaxxer.hikari.HikariDataSource
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: true
+    show-sql: false
+#  liquibase:
+#    change-log: classpath:db/changelog/db.changelog-master.json
+
+logging:
+  config: classpath:logback-dev.xml
+
+---
+spring:
+  profiles: postgre
+
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/test
+    username: root
+    password: root
+
+    hikari:
+      maximum-pool-size: 10
+      connectionTimeout: 3000
+      leakDetectionThreshold: 30000
+      #      minimum-idle: 1
+      max-lifetime: 120000
+    type: com.zaxxer.hikari.HikariDataSource
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    #    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    how-sql: false
+    hibernate:
+      ddl-auto: update
+      #      ddl-auto: create-drop
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        format_sql: true
+
+#logging:
+#  config: classpath:logback-postgre.xml

@@ -1,0 +1,101 @@
+def jUnitVer='5.4.2'
+def assertJVer = '3.12.2'
+def h2Ver = '1.4.197'
+def mysqlConnectorVer = '8.0.14'
+def hibernateVer = '5.11.2.Final'
+def swaggerVer = '2.9.2'
+
+buildscript {
+
+    ext{
+        bootVer='2.1.1.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$bootVer")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+application {
+    mainClassName = 'com.georent.GeoRentStarter'
+}
+
+bootJar {
+    manifest {
+        attributes 'Start-Class': 'com.georent.GeoRentStarter'
+    }
+}
+
+dependencies {
+
+    implementation 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+//    Thymeleaf
+//    implementation 'org.springframework.boot:spring-boot-starter-parent'
+//    наш старый добрый thymeleaf шаблонизатор
+//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//    орячая подмена, выключенный кеш для шаблонов, включенный live reload
+//    implementation 'org.springframework.boot:spring-boot-devtools'
+//    опционально, библиотека добавит полезные теги для SPRING SECURITY в Thymeleaf шаблонах
+//    compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4'
+
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.11.548'
+    implementation 'commons-io:commons-io:2.4'
+    implementation "io.springfox:springfox-swagger2:$swaggerVer"
+    implementation "io.springfox:springfox-swagger-ui:$swaggerVer"
+
+    implementation "org.hibernate:hibernate-search-orm:$hibernateVer"
+    implementation "org.hibernate:hibernate-search-engine:$hibernateVer"
+    compile  "org.postgresql:postgresql"
+//    compile group: 'org.postgresql', name: 'postgresql', version: '42.1.1'
+
+//    implementation 'org.liquibase:liquibase-core'
+
+    implementation 'org.apache.commons:commons-lang3:3.8.1'
+    implementation 'org.apache.commons:commons-text:1.6'
+
+    runtime "com.h2database:h2:$h2Ver"
+    runtime "mysql:mysql-connector-java:$mysqlConnectorVer"
+
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testImplementation "org.junit.jupiter:junit-jupiter:$jUnitVer"
+    testImplementation "org.assertj:assertj-core:$assertJVer"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+}
+
+compileJava   {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}

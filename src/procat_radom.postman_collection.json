@@ -1,0 +1,1135 @@
+{
+	"info": {
+		"_postman_id": "b5dc4f46-9bda-4acd-8882-30480249ce84",
+		"name": "procat_radom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User and Lot",
+			"item": [
+				{
+					"name": "Register USER",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"firstName\",\n    \"lastName\": \"lastName\",\n    \"email\": \"user3@gmail.com.ua\",\n    \"password\": \"password3\",\n    \"phoneNumber\": \"123456789012\"\n}\n\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"register"
+							]
+						},
+						"description": "Register a new USER\n\n1) When registering each USER - validity is checked.\n\n2) There is only one unique value: email.\n\n3) If you need to register a new USER for the test, all you have to do is change the email only.\n\nValidation check:\n\nemail field (standard email input is used):\n- allowed Latin characters, numbers, lower underscores, dot, signs \"[] @\";\n- min = 6, max  = 40;\n\npassword field:\n- Latin characters, numbers, underscores are allowed;\n- min = 8, max  = 64;\n\nphoneNumber field:\n- only numbers are allowed;\n- min = 12, max  = 12;"
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"firstName\",\n    \"lastName\": \"lastName\",\n    \"email\": \"mkyong@gmail12.com.aa\",\n    \"password\": \"pass5678910\",\n    \"phoneNumber\": \"123456789012\"\n}\n\n<!-- comment\nRegister a new USER\n1) When registering each USER - validity is checked.\n2) There is only one unique value: email.\n3) If you need to register a new USER for the test, all you have to do is change the email only.\nValidation check:\nemail field (standard email input is used):\n- allowed Latin characters, numbers, lower underscores, dot, signs \"[] @\";\n- min = 6, max  = 40;\npassword field:\n- Latin characters, numbers, underscores are allowed;\n- min = 8, max  = 64;\nphoneNumber field:\n- only numbers are allowed;\n- min = 12, max  = 12;-->"
+								},
+								"url": {
+									"raw": "http://localhost:8080/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 May 2019 09:06:28 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User registered successfully!\",\n    \"body\": {\n        \"firstName\": \"firstName\",\n        \"lastName\": \"lastName\",\n        \"email\": \"mkyong@gmail12.com.aa\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register Lot",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYxNzQyMjYxLCJleHAiOjE1NjE3NDU4NjF9.--J4Br58qSGNFSXtt6JKLNJqvcbeBVB9LMmtrOHoEVSGqDP1VL073Xu1F6NQTMMxc1PqN5hosskZaVKnDcX8lA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \"longitude\": \"30.4234496\",\n    \"latitude\": \"50.4365056\",\n    \"address\": \"100 Киевs 140\",\n    \"lotName\": \"lotName23\",\n    \"lotDescription\": \"lotDescription2 lotDescription lotDescription\"\n\n    }\n\n "
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/lot",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"lot"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request:\n\nFor example:\n\n\"tokenType\": \"Bearer\", \n\n \"accessToken\": \n \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTU4Njk2MTk0LCJleHAiOjE1NTg2OTk3OTR9.4WlO568k_8WMbzz_VZPQcML5OwjrpHQOrBQPJwnmzKinBneSIp60j4VTK6plAXSTJ3oQcvphHE7rC-Y5kY3fhg\"\n\n2)Validation check:\n\nprice: \"Long\";\n\nlongitude: \"float\"; \n\nlatitude: \"float\";"
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/user/lot",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"longitude\": \"801.800\",\n    \"latitude\": \"901.900\",\n    \"address\": \"100 Киев 14\",\n    \"itemPath\": \"d:tmp/dc/2.png\",\n    \"itemName\": \"itemName2\",\n    \"lotDescription\": \"lotDescription2 lotDescription lotDescription\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/user/lot",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"lot"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Register Lot with Picture",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYxODIzNjE2LCJleHAiOjE1NjE4MjcyMTZ9.gFcSWhtcSzyxYuFyqdVKVhuX88frWie3nSEDxfM4F9TVprmqhatRY6wnHJ1_IsnbNsNDZ8c82tMmROeMO9aaMA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/mnt/data/Hillel/Kino_Procat/Png_Jpg/drel.jpg"
+								},
+								{
+									"key": "lot",
+									"value": "{\"price\":\"456\",\"longitude\":\"30.3807901\",\"latitude\":\"50.4115383\",\"address\":\"100 Киев 14\",\"lotName\":\"lotName2\",\"lotDescription\":\"lotDescription2 lotDescription lotDescription\"}",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/mnt/data/Hillel/Kino_Procat/Png_Jpg/shurup.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/lot/upload-picture",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"lot",
+								"upload-picture"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request:\n\nFor example:\n\n\"tokenType\": \"Bearer\", \n\n \"accessToken\": \n \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTU4Njk2MTk0LCJleHAiOjE1NTg2OTk3OTR9.4WlO568k_8WMbzz_VZPQcML5OwjrpHQOrBQPJwnmzKinBneSIp60j4VTK6plAXSTJ3oQcvphHE7rC-Y5kY3fhg\"\n\n2)Add Body from-data:\n\n2.1) KEY: files\n\nvalue: path for read file/files for tne lot\n\n2.2) KEY: lot\n\nvalue: Example: \n\n{\"price\":\"120\",\"longitude\":\"80800\",\"latitude\":\"901.900\",\"address\":\"100 Киев 14\",\"lotName\":\"newLotName With Picture\",\"lotDescription\":\"lotDescription2 lotDescription lotDescription\"}"
+					},
+					"response": [
+						{
+							"name": "Register Lot with Picture",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/mnt/data/Hillel/Kino_Procat/Png_Jpg/drel.jpg"
+										},
+										{
+											"key": "testDto",
+											"value": "{\"price\":\"456\",\"longitude\":\"801.800\",\"latitude\":\"901.900\",\"address\":\"100 Киев 14\",\"itemPath\":\"d:tmp/dc/2.png\",\"itemName\":\"itemName2\",\"lotDescription\":\"lotDescription2 lotDescription lotDescription\"}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/user/lot/upload-picture",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"lot",
+										"upload-picture"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get user token",
+			"item": [
+				{
+					"name": "Get registered user token (login)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user3@gmail.com.ua\",\n    \"password\": \"password3\"\n\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						},
+						"description": "By input parameters USER: email and password\n\nWe get in response values: accessToken, tokenType\n\nWe use these parameters for requests where authorization is required.\n\nFor example:\n\n    \"accessToken\": \n\n \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNTU4Njk2MTk0LCJleHAiOjE1NTg2OTk3OTR9.4WlO568k_8WMbzz_VZPQcML5OwjrpHQOrBQPJwnmzKinBneSIp60j4VTK6plAXSTJ3oQcvphHE7rC-Y5kY3fhg\";\n\n    \"tokenType\": \"Bearer\";"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get User and his Lots",
+			"item": [
+				{
+					"name": "Get all user lots",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYwNTQ0ODU2LCJleHAiOjE1NjA1NDg0NTZ9.KaLWr2Tz9SgQYbYHI-GE_bbZ-QtA95bANgY_zwbjiPkOSKbNouZUNmfGJ1pFJ0Yq7Y4K21-xrcYyDKJ-ptgouA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/lots",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"lots"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request.\n\n2) Output: lists of lots"
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/user/lots",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/user/lots",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"lots"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get one user lot",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYwNTQ0ODU2LCJleHAiOjE1NjA1NDg0NTZ9.KaLWr2Tz9SgQYbYHI-GE_bbZ-QtA95bANgY_zwbjiPkOSKbNouZUNmfGJ1pFJ0Yq7Y4K21-xrcYyDKJ-ptgouA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/lot/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"lot",
+								"8"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request.\n\n2) Output: one lot"
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/user/lot/3",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/user/lot/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"lot",
+										"3"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get user information",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYwNTQ0ODU2LCJleHAiOjE1NjA1NDg0NTZ9.KaLWr2Tz9SgQYbYHI-GE_bbZ-QtA95bANgY_zwbjiPkOSKbNouZUNmfGJ1pFJ0Yq7Y4K21-xrcYyDKJ-ptgouA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "      {\n        \"firstName\":\"firstName2\",\n        \"lastName\":\"lastName\",\n         \"email\":null,\n         \"password\":\"password\",\n         \"phoneNumber\":\"106\"\n    }\n\n\n "
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request.\n\n2) Output: one user"
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get one user lot with picture",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYwNTQ0ODU2LCJleHAiOjE1NjA1NDg0NTZ9.KaLWr2Tz9SgQYbYHI-GE_bbZ-QtA95bANgY_zwbjiPkOSKbNouZUNmfGJ1pFJ0Yq7Y4K21-xrcYyDKJ-ptgouA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/lot/upload-picture/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"lot",
+								"upload-picture",
+								"8"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request.\n\n2) Output: one lot with:\n\n- link to picture from S3 (expires-in: 60000 == 1 min)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Edit user",
+			"item": [
+				{
+					"name": "Edit user information",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYwNTQ0ODU2LCJleHAiOjE1NjA1NDg0NTZ9.KaLWr2Tz9SgQYbYHI-GE_bbZ-QtA95bANgY_zwbjiPkOSKbNouZUNmfGJ1pFJ0Yq7Y4K21-xrcYyDKJ-ptgouA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "      {\n    \"firstName\": \"first23\",\n    \"lastName\": \"last23\",\n    \"phoneNumber\": \"222256789012\"\n         \n    }\n\n\n "
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request.\n\n2)Only edit:\n     \n     \"firstName\",\n     \"lastName\",\n     \"phoneNumber\""
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/user",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "      {\n    \"firstName\": \"first23\",\n    \"lastName\": \"last23\",\n    \"phoneNumber\": \"222256789012\"\n         \n    }\n\n\n "
+								},
+								"url": {
+									"raw": "http://localhost:8080/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Deleting a user and his lots",
+			"item": [
+				{
+					"name": "Delete user and all his lots",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYwNTQyNzMwLCJleHAiOjE1NjA1NDYzMzB9.DUUrPgW5Ung0_qIrIyNvWdO-jdQQ90ixvzGSL7VzNT2_1RipJTEXfQouI4vKN_MqcTOQC0mFUPbQBawRyAfTnw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request.\n\n2) When a user is deleted, everything is deleted, but only those lots that are associated with it."
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/user",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete one user lot",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYwNTQ0ODU2LCJleHAiOjE1NjA1NDg0NTZ9.KaLWr2Tz9SgQYbYHI-GE_bbZ-QtA95bANgY_zwbjiPkOSKbNouZUNmfGJ1pFJ0Yq7Y4K21-xrcYyDKJ-ptgouA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "      {\n        \"firstName\":\"firstName2\",\n        \"lastName\":\"lastName\",\n         \"email\":\"nick@avalr.com.ua\",\n         \"password\":\"password\",\n         \"phoneNumber\":\"106\"\n    }\n\n\n "
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/lot/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"lot",
+								"8"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request.\n\n2) One lot is deleted if it is associated with the user.\n\nThe lot and all records associated with it (including the description and pictures) are deleted."
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/user/lot/3",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/user/lot/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"lot",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 May 2019 08:49:04 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Lot deleted successfully!\",\n    \"body\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete all user lots.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTYwNTQ0ODU2LCJleHAiOjE1NjA1NDg0NTZ9.KaLWr2Tz9SgQYbYHI-GE_bbZ-QtA95bANgY_zwbjiPkOSKbNouZUNmfGJ1pFJ0Yq7Y4K21-xrcYyDKJ-ptgouA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/lots",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"lots"
+							]
+						},
+						"description": "The request is performed with authorization by USER\n\n1) Add authorization from the Get registered user token (login) request.\n\n2) All lots associated with the user are deleted.\n\nAll records associated with these lots (including the description and pictures) are deleted."
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/user/lots",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/user/lots",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"lots"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get lots without binding to the user",
+			"item": [
+				{
+					"name": "Get information on all lots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lot",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lot"
+							]
+						},
+						"description": "Request open. Performed without authorization of the USER.\n\nIt is used when starting the program to display all the lots on the map."
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/lot",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/lot",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"lot"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get information on one lot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lot/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lot",
+								"1"
+							]
+						},
+						"description": "Request open. Performed without authorization of the USER."
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/lot/1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/lot/15",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"lot",
+										"15"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get information on all lots one page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lot/page/1/3/next",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lot",
+								"page",
+								"1",
+								"3",
+								"next"
+							]
+						},
+						"description": "Request open. Performed without authorization of the USER.\n\n1) It is used at the start and after the start of the program to display all the lots in format Pagination without sorting.\n\n2) IntPut: Processes the GET request to \"/lot//page/{number}/{count}/{metod}\" URI.\n\n- \"number\" - Page number. First page from one. \n\nIf the parameter is greater than the maximum page value, the page with the last page value is returned.\n\n- \"count\" - The count of lots on one page.\n\n- \"metod\" - String value. If one of these values: \"first\", \"next\", \"previous\", \"previousOrFirst\", \"last\"\n calls the appropriate pageable method.\n\nAll other values are ignored and the current page is displayed with parameter \"number\"\n\n3) OutPut: PageImpl:\n- listLotPageDTO in content \n- pageNumber\n- totalPages"
+					},
+					"response": []
+				},
+				{
+					"name": "Get information about all lots with lotDescriptionfilters and lotName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/search/?query=lotName23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "lotName23"
+								}
+							]
+						},
+						"description": "Request open. Performed without authorization of the USER.\n\n1) It is used at the start and after the start of the program to display all the lots in format List<LotPageDTO>.\n\n2) IntPut: Processes the GET request to \"search/?query={query}\" URI.\n\n\"query\" - filter to the on Fields: \"lotName\" and \"lotDescription\"\n\n3) OutPut: Response, containing the all lots with filters: \"query\" on Fields: \"lotName\" and \"lotDescription\" in the format  List<DescriptionDTO>"
+					},
+					"response": []
+				},
+				{
+					"name": "Get information about all lots with address filters and lotName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/search/filters/?address=Kuiv&lotname=lotName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"search",
+								"filters",
+								""
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "Kuiv"
+								},
+								{
+									"key": "lotname",
+									"value": "lotName"
+								}
+							]
+						},
+						"description": "Request open. Performed without authorization of the USER.\n\n1) It is used at the start and after the start of the program to display all the lots in format List<LotPageDTO>.\n\n2) IntPut: Processes the GET request to \"search/twoparams?address={address}&lotname={lotname}\" URI.\n\n\"address\" - filter to the field address\n\n\"lotname\" - filter to the field lotname\n\n3) OutPut: listLotDTO in content"
+					},
+					"response": []
+				},
+				{
+					"name": "Get information about all lots/page with address filters and lotName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/search/page/2/3/next/?address=14&lotName=lotName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"search",
+								"page",
+								"2",
+								"3",
+								"next",
+								""
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "14"
+								},
+								{
+									"key": "lotName",
+									"value": "lotName"
+								}
+							]
+						},
+						"description": "Request open. Performed without authorization of the USER.\n\n1) It is used at the start and after the start of the program to display all the lots in format List<LotPageDTO>.\n\n2) IntPut: Processes the GET request to \"/search/page/{number}/{count}/{metod}?address={address}&lotname={lotname}\" URI.\n\n\"number\" - Page number. First page from one.\n\nIf the parameter is greater than the maximum page value, the page with the last page value is returned.\n\n\"count\" - The count of lots on one page.\n\n\"metod\" - String value. If one of these values: \"first\", \"next\", \"previous\", \"previousOrFirst\", \"last\" calls the appropriate pageable method.\n\n\"address\" - filter to the field address\n\n\"lotname\" - filter to the field lotname\n\nAll other values are ignored and the current page is displayed with parameter \"number\"\n\n3) OutPut: PageImpl:\n- listLotPageDTO in content \n- pageNumber\n- totalPages"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

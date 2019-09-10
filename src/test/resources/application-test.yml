@@ -1,0 +1,80 @@
+spring:
+  profiles:
+    active: test
+
+aws:
+  secret-key: 0YEd7sI2PvzbFNcun/E6EcO9tUOey9O+xwK/nJtV
+  access-key: AKIA4BDR5OXQEJFE574O
+  bucket-name: geo-rent-bucket
+  and-point-url: https://georent.ua/
+  expires-in: 60000
+
+app:
+  jwt:
+    secretKey: glutton-oversight-rare-shine-unchain-unboxed
+    expiresIn: 3600000
+---
+mail:
+  host: smtp.gmail.com
+  port: 587
+  user-name: prokatradom@gmail.com
+  pass: procatAS2107
+  #  URL: link to the server to reconstruct the user's password
+  url: ec2-52-206-69-68.compute-1.amazonaws.com:8080
+
+spring:
+  profiles: test
+
+  datasource:
+    url: jdbc:h2:mem:georentdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    platform: h2
+    username: geo
+    password: geo
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: true
+    show-sql: false
+
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: false
+
+logging:
+  config: classpath:logback-local.xml
+---
+spring:
+  profiles: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/georentdb
+    username: root
+    password: admin
+
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: true
+    show-sql: false
+#  liquibase:
+#    change-log: classpath:db/changelog/db.changelog-master.json
+
+logging:
+  config: classpath:logback-dev.xml
